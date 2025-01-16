@@ -31,3 +31,48 @@ This project is a server-client application for managing a firewall's configurat
 2. Run the following command to compile the project:
    ```bash
    make
+   ```
+
+### Running the Server
+1. To run the server interactively:
+   ```bash
+   ./server -i
+   ```
+2. To run the server with networking:
+   ```bash
+   ./server <port>
+   ```
+
+### Running the Client
+1. Use the following syntax to run the client:
+   ```bash
+   ./client <serverHost> <serverPort> <command>
+   ```
+
+## Usage Examples
+- Adding a firewall rule:
+  ```bash
+  ./client localhost 2200 A 147.188.192.0-147.188.193.255 22-80
+  ```
+- Checking a connection:
+  ```bash
+  ./client localhost 2200 C 147.188.192.1 22
+  ```
+- Deleting a firewall rule:
+  ```bash
+  ./client localhost 2200 D 147.188.192.0-147.188.193.255 22-80
+  ```
+
+## Project Structure
+- `server.c`: The main server program handling requests.
+- `client.c`: The client program for sending commands to the server.
+- `Makefile`: Build automation for compiling the project.
+- `test.sh`: A basic script for testing the server's functionality.
+
+## Future Work
+- Implement additional commands for advanced firewall management.
+- Enhance concurrency handling and stress-test performance under heavy load.
+- Expand the test suite for more robust functionality checks.
+
+## Acknowledgments
+This project is part of the Operating Systems and Systems Programming course at the University of Birmingham. Special thanks to Professors Eike Ritter and David Oswald for their guidance and provided resources.
